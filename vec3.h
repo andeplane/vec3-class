@@ -12,12 +12,16 @@ public:
     vec3(vec3 const&copy);
     vec3(double x, double y, double z);
 
-    void print();
-    void print(std::string name);
-    vec3 cross(vec3 otherVector);
-    double dot(vec3 otherVector);
     double lengthSquared();
     double length();
+
+    // Actions
+    vec3 cross(vec3 otherVector);
+    double dot(vec3 otherVector);
+    void normalize();
+    vec3 normalized();
+
+    // Getters and setters
     double x() const { return components[0]; }
     double y() const { return components[1]; }
     double z() const { return components[2]; }
@@ -25,6 +29,12 @@ public:
     void setY(double y) { components[1] = y; }
     void setZ(double z) { components[2] = z; }
 
+    // Convenience functions
+    void print();
+    void print(std::string name);
+    friend std::ostream& operator<<(std::ostream& os, const vec3& myVector); // Allows cout << myVector << endl;
+
+    // Operators
     double &operator()(int index) { return components[index]; } // Allows access like myVector(0)
     double &operator[](int index) { return components[index]; } // Allows access like myVector[0]
     vec3 &operator+=(double rhs); // Componentwise addition with scalar
@@ -35,7 +45,6 @@ public:
     vec3 &operator-=(vec3 rhs);   // Componentwise subtraction with vector
     vec3 &operator/=(double rhs); // Componentwise division with scalar
     vec3 &operator/=(vec3 rhs);   // Componentwise division with vector
-    friend std::ostream& operator<<(std::ostream& os, const vec3& myVector); // Allows cout << myVector << endl;
 };
 
 inline vec3 operator+(vec3 lhs, double rhs) {

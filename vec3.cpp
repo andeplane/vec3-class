@@ -47,6 +47,23 @@ double vec3::dot(vec3 otherVector)
     return otherVector[0]*components[0] + otherVector[1]*components[1] + otherVector[2]*components[2];
 }
 
+void vec3::normalize()
+{
+    double length = this->length();
+    if(length > 0) {
+        components[0] /= length;
+        components[1] /= length;
+        components[2] /= length;
+    }
+}
+
+vec3 vec3::normalized()
+{
+    vec3 newVector = *this;
+    newVector.normalize();
+    return newVector;
+}
+
 double vec3::lengthSquared()
 {
     // Returns the square of the length (or norm) of the vector
