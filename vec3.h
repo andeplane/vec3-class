@@ -6,12 +6,10 @@
 class vec3
 {
 public:
-    double components[3];
-
     vec3();
-    vec3(vec3 const&copy);
+    vec3(const vec3&) = default;
+    vec3(vec3&&) = default;
     vec3(double x, double y, double z);
-
     double lengthSquared();
     double length();
 
@@ -45,6 +43,8 @@ public:
     vec3 &operator-=(vec3 rhs);   // Componentwise subtraction with vector
     vec3 &operator/=(double rhs); // Componentwise division with scalar
     vec3 &operator/=(vec3 rhs);   // Componentwise division with vector
+private:
+    double components[3];
 };
 
 inline vec3 operator+(vec3 lhs, double rhs) {

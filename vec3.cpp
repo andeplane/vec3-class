@@ -10,13 +10,6 @@ vec3::vec3()
     components[2] = 0;
 }
 
-vec3::vec3(const vec3 &copy)
-{
-    components[0] = copy.x();
-    components[1] = copy.y();
-    components[2] = copy.z();
-}
-
 vec3::vec3(double x, double y, double z)
 {
     components[0] = x;
