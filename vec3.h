@@ -14,6 +14,7 @@ public:
     double length();
 
     // Actions
+    void zeros();
     vec3 cross(vec3 otherVector);
     double dot(vec3 otherVector);
     void normalize();
